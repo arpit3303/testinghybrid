@@ -23,7 +23,7 @@
 // Send data to the host app using a custom event
 function sendDataToHostApp(data) {
     const event = new CustomEvent('messageFromWebView', { detail: data });
-    (window.opener).dispatchEvent(event);
+    window.opener.dispatchEvent(event);
 }
 
 
