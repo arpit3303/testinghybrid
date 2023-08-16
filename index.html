@@ -16,7 +16,18 @@
     function Namefunction(){
 
       alert("i am here");
-      window.testFunc();
+      sendDataToHostApp("Hello from WebView!");
+
+
+
+      function sendDataToHostApp(data) {
+    const encodedData = encodeURIComponent(data);
+    window.location.href = 'myapp://' + encodedData;
+}
+
+// Example usage of sending data to the host app
+
+
 
     }
 
