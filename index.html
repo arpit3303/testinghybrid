@@ -7,7 +7,7 @@
   <body>
 
 
-    <button onclick="Namefunction()">testing function</button>
+    <button onclick="sendDataToHostApp("Hello from WebView!")">testing function</button>
 
 
     
@@ -17,19 +17,20 @@
 
       alert("i am here");
       sendDataToHostApp("Hello from WebView!");
+    }
 
 
-
-      function sendDataToHostApp(data) {
-    const encodedData = encodeURIComponent(data);
-    window.location.href = 'myapp://' + encodedData;
+// Send data to the host app using a custom event
+function sendDataToHostApp(data: any) {
+    const event = new CustomEvent('messageFromWebView', { detail: data });
+    (window.opener as Window).dispatchEvent(event);
 }
 
 // Example usage of sending data to the host app
 
 
 
-    }
+    
 
   </script>
   </body>
